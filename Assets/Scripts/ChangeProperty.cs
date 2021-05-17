@@ -4,25 +4,44 @@ using UnityEngine;
 
 public class ChangeProperty : MonoBehaviour
 {
+    [SerializeField] GameController gameController;
+
+    public GameObject description;
+    public AudioSource confirmationSound;
+
+    bool encima = false;
+    public bool startSound;
     float MyTime = 0.0f;
     bool active = false;
     public void Desactive()
     {
         GetComponent<Renderer>().material.color = Color.red;
         active = false;
+        description.SetActive(false);
+        encima = false;
     }
 
     public void Active()
     {
         GetComponent<Renderer>().material.color = Color.blue;
         MyTime = 0;
+        active = false;
+        encima = true;
+    }
+
+    public void Click()
+    {
+        GetComponent<Renderer>().material.color = Color.black;
         active = true;
+        encima = false;
 
     }
 
     public void Action()
     {
         GetComponent<Renderer>().material.color = Color.black;
+        gameController.StopVideo();
+
     }
 
     public void ShowInformation()
@@ -35,7 +54,12 @@ public class ChangeProperty : MonoBehaviour
         MyTime += Time.deltaTime;
         if (active && MyTime > 1)
         {
-            ShowInformation();
+            description.SetActive(true);
+        }
+        if (encima && MyTime > 1)
+        {
+            confirmationSound.PlayOneShot(confirmationSound.clip);
+            encima = false;
         }
     }
 }
