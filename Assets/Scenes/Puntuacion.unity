@@ -696,6 +696,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661240812}
   m_CullTransparentMesh: 0
+--- !u!1 &706654178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4369065082735945917, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
+    type: 3}
+  m_PrefabInstance: {fileID: 413469603}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &706654184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706654178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c124c5150f52a44b80437a5b890647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalScoreText: {fileID: 0}
 --- !u!1 &848580209
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +729,7 @@ GameObject:
   - component: {fileID: 848580212}
   - component: {fileID: 848580211}
   - component: {fileID: 848580210}
+  - component: {fileID: 848580216}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -916,6 +936,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &848580216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848580209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c124c5150f52a44b80437a5b890647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalScoreText: {fileID: 1396623263}
 --- !u!1 &904263330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,3 +1624,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4526333cb2448c348a7f7e2679a1c212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2088631735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088631727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c124c5150f52a44b80437a5b890647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalScoreText: {fileID: 0}

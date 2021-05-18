@@ -18,6 +18,10 @@ public class GameController : MonoBehaviour
 
     public GameObject question;
 
+    public Text[] buttonsText = new Text[4];
+
+    public Text questionText;
+
     public GameObject warning;
 
     public Text scoreText;
@@ -54,6 +58,13 @@ public class GameController : MonoBehaviour
 
     private int stage = 0;
 
+    private string[] questions;
+
+    private string[] answerA;
+    private string[] answerB;
+    private string[] answerC;
+    private string[] answerD;
+
     int MyTime = 0;
 
     // Start is called before the first frame update
@@ -62,7 +73,42 @@ public class GameController : MonoBehaviour
     {
         // currentMinutes = new Text();
         // currentSeconds = new Text();
+        questions = new string[] { "Qué escultura está compuesta por dos figuras en esta sala?",
+                                   "Qué estatua tiene en la base una tortuga?",
+                                "Cual de las siguientes obras forma originalmente parte de una estatua ecuestre?",
+                                "Seis de sus fragmentos se conservan en el museo de Rouen"
+        };
+
+
+        answerA = new string[] { "Orestes y Pylades",
+                                "Germanicus, Marcellus, Auguste" ,
+                                "Claude",
+                                "El sarcófago de Hera"
+                                };
+
+        answerB = new string[] { "Rómulo y Remo",
+                                "Ceres Borghèse" ,
+                                "L'Empereur Othon",
+                                "Sévère Alexandre"
+                                };
+
+        answerC = new string[] { "El rapto",
+                                " Auguste (portrait)",
+                                "Nero",
+                                "la Julia Domna"
+
+                                };
+
+        answerD = new string[] { "Ninguna",
+                                "La Monalisa" ,
+                                "Cicerón",
+                                "Apollon de Lillebonne"
+                                };
+
+        score = PlayerPrefs.GetInt("score");
         score = 0;
+        PlayerPrefs.SetInt("score", score);
+
         scoreText.text = "Score: " + score.ToString();
         wasAnswered = false;
         isAnswered = false;
@@ -71,7 +117,8 @@ public class GameController : MonoBehaviour
     void SetCurrentTimeUI()
     {
 
-        currentMinutes = Mathf.Floor((int)video360.time / 60).ToString("00");
+        // currentMinutes = Mathf.Floor((int)video360.time / 60).ToString("00");
+        currentMinutes = "00";
         currentSeconds = ((int)video360.time).ToString("00");
 
 
@@ -83,17 +130,24 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MyTime = (int)Mathf.Floor(Time.time);
+        Debug.Log(stages.Length);
+        Debug.Log(stage);
+        MyTime = (int)Mathf.Floor(Time.timeSinceLevelLoad);
         SetCurrentTimeUI();
-        Debug.Log(MyTime - (stopStages[stage] + offsetTime));
-        Debug.Log(timeWarning);
+        // Debug.Log(MyTime - (stopStages[stage] + offsetTime));
+        // Debug.Log(timeWarning);
 
 
         if (int.Parse(currentSeconds) == stopStages[stage] && isWarning)
         {
             video360.Pause();
-            warningText.text = "Escanee el entorno!";
+            warningText.text = "Investiga el entorno!";
             warning.SetActive(true);
+            questionText.text = "Pregunta: " + questions[stage];
+            buttonsText[0].text = "A: " + answerA[stage];
+            buttonsText[1].text = "B: " + answerB[stage];
+            buttonsText[2].text = "C: " + answerC[stage];
+            buttonsText[3].text = "D: " + answerD[stage];
 
         }
 
@@ -142,14 +196,16 @@ public class GameController : MonoBehaviour
                 if (questionAnswered == correctAnswers[stage])
                 {
                     warningText.text = "Respuesta correcta!";
-                    score += 1;
+                    score += 10;
+                    PlayerPrefs.SetInt("score", score);
                     warning.SetActive(true);
 
                 }
                 else if (questionAnswered != correctAnswers[stage])
                 {
                     warningText.text = "Respuesta incorrecta!";
-                    score -= 1;
+                    score -= score > 0 ? 5 : 0;
+                    PlayerPrefs.SetInt("score", score);
                     warning.SetActive(true);
 
                 }
@@ -172,6 +228,7 @@ public class GameController : MonoBehaviour
             isWarning = true;
             offsetTime = MyTime - int.Parse(currentSeconds);
         }
+
         if (stages.Length == stage)
         {
             SceneManager.LoadScene("Puntuacion");
