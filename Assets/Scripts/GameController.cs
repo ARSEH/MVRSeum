@@ -37,8 +37,6 @@ public class GameController : MonoBehaviour
 
 
     private bool isWarning = true;
-    // public Text totalMinutes;
-    // public Text totalSeconds;
 
     private bool isAnswered = false;
     public int timeWarning;
@@ -47,13 +45,15 @@ public class GameController : MonoBehaviour
 
     public int timeAnswer;
 
+    private int offsetTime = 0;
+
     public int[] stopStages;
 
     public int[] correctAnswers;
 
     private int stage = 0;
 
-    float MyTime = 0.0f;
+    int MyTime = 0;
 
     // Start is called before the first frame update
 
@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour
     {
 
         currentMinutes = Mathf.Floor((int)video360.time / 60).ToString("00");
-        currentSeconds = ((int)video360.time % 60).ToString("00");
+        currentSeconds = ((int)video360.time).ToString("00");
 
 
         // timeCounter.text = currentMinutes + " : " + currentSeconds;
@@ -82,8 +82,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MyTime = Mathf.Floor(Time.time);
+        MyTime = (int)Mathf.Floor(Time.time);
         SetCurrentTimeUI();
+        Debug.Log(MyTime - (stopStages[stage] + offsetTime));
+        Debug.Log(timeWarning);
 
 
         if (int.Parse(currentSeconds) == stopStages[stage] && isWarning)
@@ -94,7 +96,7 @@ public class GameController : MonoBehaviour
 
         }
 
-        if (MyTime - stopStages[stage] == timeWarning)
+        if ((MyTime - (stopStages[stage] + offsetTime)) == timeWarning)
         {
             warning.SetActive(false);
             stages[stage].SetActive(true);
@@ -103,20 +105,20 @@ public class GameController : MonoBehaviour
 
         }
 
-        if (MyTime - stopStages[stage] > timeWarning && (MyTime - (stopStages[stage] + timeWarning) < timeQuestion))
+        if ((MyTime - (stopStages[stage] + offsetTime)) > timeWarning && (MyTime - (stopStages[stage] + timeWarning + offsetTime) < timeQuestion))
         {
             Timer.SetActive(true);
-            timeCounter.text = currentMinutes + " : " + (timeQuestion + (stopStages[stage] + timeWarning) - MyTime).ToString("00");
+            timeCounter.text = currentMinutes + " : " + (timeQuestion + (stopStages[stage] + timeWarning + offsetTime) - MyTime).ToString("00");
 
         }
-        else if (((MyTime - (stopStages[stage] + timeWarning + timeQuestion) < timeAnswer)))
+        else if (((MyTime - (stopStages[stage] + timeWarning + timeQuestion + offsetTime) < timeAnswer)))
         {
-            timeCounter.text = currentMinutes + " : " + (timeAnswer + (stopStages[stage] + timeWarning + timeQuestion) - MyTime).ToString("00");
+            timeCounter.text = currentMinutes + " : " + (timeAnswer + (stopStages[stage] + timeWarning + timeQuestion + offsetTime) - MyTime).ToString("00");
 
         }
 
 
-        if (MyTime - (stopStages[stage] + timeWarning) == timeQuestion)
+        if (MyTime - (stopStages[stage] + timeWarning + offsetTime) == timeQuestion)
         {
             stages[stage].SetActive(false);
             question.SetActive(true);
@@ -124,7 +126,7 @@ public class GameController : MonoBehaviour
 
         }
 
-        if (((MyTime - (stopStages[stage] + timeWarning + timeQuestion) == timeAnswer) && !wasAnswered) || isAnswered)
+        if (((MyTime - (stopStages[stage] + timeWarning + timeQuestion + offsetTime) == timeAnswer) && !wasAnswered) || isAnswered)
         {
             question.SetActive(false);
 
@@ -158,13 +160,16 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if (MyTime - (stopStages[stage] + timeWarning + timeQuestion + timeAnswer) == 2)
+        if (MyTime - (stopStages[stage] + timeWarning + timeQuestion + timeAnswer + offsetTime) == 2)
         {
             Timer.SetActive(false);
             stage++;
             warning.SetActive(false);
             wasAnswered = false;
+            isAnswered = false;
             video360.Play();
+            isWarning = true;
+            offsetTime = MyTime - int.Parse(currentSeconds);
 
         }
 
