@@ -24,7 +24,10 @@ public class MenuOptionsController : MonoBehaviour
         else
         {
             Debug.Log("Exit application");
-            Application.Quit();
+            // Application.Quit();
+            Debug.Log("Credits");
+            SceneManager.LoadScene("Credits");
+
         }
 
     }

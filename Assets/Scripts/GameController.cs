@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class GameController : MonoBehaviour
@@ -170,7 +171,10 @@ public class GameController : MonoBehaviour
             video360.Play();
             isWarning = true;
             offsetTime = MyTime - int.Parse(currentSeconds);
-
+        }
+        if (stages.Length == stage)
+        {
+            SceneManager.LoadScene("Puntuacion");
         }
 
         // Debug.Log(score);

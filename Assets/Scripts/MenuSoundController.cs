@@ -27,7 +27,7 @@ public class MenuSoundController : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
 
-        if (scene.name == "Game")
+        if (scene.name == "Game" || scene.name == "Credits")
         {
             Debug.Log("Estoy en la scena Game");
             // Destroy(gameObject);
