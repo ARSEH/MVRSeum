@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ObjectActions : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public GameObject description;
+
+    public Transform pointerImage;
+
+    public AudioSource confirmationSound;
 
     bool encima = false;
     public bool startSound;
@@ -20,6 +24,8 @@ public class ObjectActions : MonoBehaviour
         activo = false;
         description.SetActive(false);
         encima = false;
+        myTime = 0;
+        pointerImage.GetComponent<Image>().fillAmount = myTime;
 
     }
 
@@ -30,6 +36,8 @@ public class ObjectActions : MonoBehaviour
         myTime = 0;
         activo = false;
         encima = true;
+        pointerImage.GetComponent<Image>().fillAmount = myTime;
+
 
         // description.SetActive(true);
 
@@ -51,6 +59,12 @@ public class ObjectActions : MonoBehaviour
     private void Update()
     {
         myTime += Time.deltaTime;
+        if (encima && myTime <= 1)
+        {
+            myTime += Time.deltaTime;
+            pointerImage.GetComponent<Image>().fillAmount = myTime;
+
+        }
         if (activo && myTime > 1)
         {
             description.SetActive(true);
@@ -58,6 +72,8 @@ public class ObjectActions : MonoBehaviour
         if (encima && myTime > 1)
         {
             encima = false;
+            confirmationSound.PlayOneShot(confirmationSound.clip);
+
         }
     }
 }
