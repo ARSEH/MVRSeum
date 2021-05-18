@@ -12,8 +12,12 @@ public class pointer360 : MonoBehaviour
     public AudioSource confirmationSound;
     public bool startSound;
 
+    public bool clickable = false;
+
     float myTime = 0.0f;
     bool active;
+
+    bool onIt;
 
     void Start()
     {
@@ -23,11 +27,17 @@ public class pointer360 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (active && myTime <= 1)
+        if (onIt && myTime <= 1)
         {
             myTime += Time.deltaTime;
             pointerImage.GetComponent<Image>().fillAmount = myTime;
 
+        }
+        if (onIt && myTime > 1)
+        {
+            confirmationSound.PlayOneShot(confirmationSound.clip);
+            onIt = false;
+            clickable = true;
         }
 
     }
@@ -39,11 +49,21 @@ public class pointer360 : MonoBehaviour
     public void Desactive()
     {
         ManagePointer(false);
+        active = false;
+    }
+
+    public void Action()
+    {
+        if (clickable)
+        {
+
+        }
     }
     public void ManagePointer(bool state)
     {
         ResetAttribs();
-        active = state;
+        onIt = state;
+        clickable = false;
 
     }
     private void ResetAttribs()

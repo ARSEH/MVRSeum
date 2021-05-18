@@ -2,7 +2,6 @@
 using UnityEngine.EventSystems;
 public class CubeEvent360 : EventTrigger
 {
-    public float myVariable;
     public override void OnPointerEnter(PointerEventData eventData)
     {
         GameObject.Find("Pointer").GetComponent<pointer360>().Active();

@@ -13,29 +13,6 @@ public class ChangeProperty : MonoBehaviour
     public bool startSound;
     float MyTime = 0.0f;
     bool active = false;
-    public void Desactive()
-    {
-        GetComponent<Renderer>().material.color = Color.red;
-        active = false;
-        description.SetActive(false);
-        encima = false;
-    }
-
-    public void Active()
-    {
-        GetComponent<Renderer>().material.color = Color.blue;
-        MyTime = 0;
-        active = false;
-        encima = true;
-    }
-
-    public void Click()
-    {
-        GetComponent<Renderer>().material.color = Color.black;
-        active = true;
-        encima = false;
-
-    }
 
     public void Action()
     {
