@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour
 
 
         answerA = new string[] { "Orestes y Pylades",
-                                "Germanicus, Marcellus, Auguste" ,
+                                "Germanicus, Marcellus" ,
                                 "Claude",
                                 "El sarcófago de Hera"
                                 };
