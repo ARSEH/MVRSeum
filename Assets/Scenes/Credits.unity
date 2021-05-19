@@ -220,7 +220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11, y: -917}
+  m_AnchoredPosition: {x: 11, y: -1355}
   m_SizeDelta: {x: 412.3, y: 244.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &392128508
@@ -482,7 +482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: -67}
+  m_AnchoredPosition: {x: 8, y: -84}
   m_SizeDelta: {x: 314.9, y: 31.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &807799582
@@ -561,8 +561,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 120, y: -552.9}
-  m_SizeDelta: {x: 241, y: 1759.9}
+  m_AnchoredPosition: {x: 130.3, y: -855.8}
+  m_SizeDelta: {x: 261.5, y: 2365.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &993304398
 MonoBehaviour:
@@ -599,7 +599,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\n\n\nYefry Pallar\xE9s N\xFAnez\n\nYefry Pallar\xE9s N\xFA\xF1ez\n\nYefry
     Pallar\xE9s N\xFA\xF1ez\n\nYefry Pallar\xE9s N\xFA\xF1ez\n\nYefry Pallar\xE9s
-    N\xFA\xF1ez\n\n\n\n\nManuart Feungpean\n\nlasercheese\n\nLullatone\n\nThomas Brush\n"
+    N\xFA\xF1ez\n\n\n\n\nManuart Feungpean\n\nlasercheese\n\nLullatone\n\nThomas Brush\n\n\n\n\n\nhttps://itch.io/\n\nhttps://freesound.org/\n\nhttps://opengameart.org"
 --- !u!222 &993304399
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -720,6 +720,7 @@ RectTransform:
   - {fileID: 1079759295}
   - {fileID: 807799581}
   - {fileID: 392128507}
+  - {fileID: 1594752082}
   m_Father: {fileID: 446680036}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -821,6 +822,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452472445}
   m_CullTransparentMesh: 0
+--- !u!1 &1594752081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1594752082}
+  - component: {fileID: 1594752084}
+  - component: {fileID: 1594752083}
+  m_Layer: 5
+  m_Name: TitleSpecial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1594752082
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594752081}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1271243223}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 8, y: -397}
+  m_SizeDelta: {x: 314.9, y: 31.2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1594752083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594752081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.9764151, b: 0.9764151, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 379faef6a95aa440781f3873babe4887, type: 3}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Especial Menci\xF3n"
+--- !u!222 &1594752084
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594752081}
+  m_CullTransparentMesh: 0
 --- !u!1 &2067741468
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,8 +935,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -115.1, y: -552.9}
-  m_SizeDelta: {x: 230.1, y: 1759.9}
+  m_AnchoredPosition: {x: -115.1, y: -855.8}
+  m_SizeDelta: {x: 230.1, y: 2365.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2067741470
 MonoBehaviour:
@@ -892,8 +972,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\n\n\nJefe de Proyecto\n\nProgramador\n\nDise\xF1ador\n\nAnimador\n\nIdea
-    original\n\n\n\n\nV\xEDdeos 360\n\nM\xFAsica Cr\xE9ditos\n\nM\xFAsica \"In game\"\n\nMen\xFA
-    \n"
+    original\n\n\n\n\nV\xEDdeos 360\n\nM\xFAsica Cr\xE9ditos\n\nM\xFAsica \"In game\"\n\nMen\xFA/Arte
+    \n\n\n\n\nRecursos Online"
 --- !u!222 &2067741471
 CanvasRenderer:
   m_ObjectHideFlags: 0
