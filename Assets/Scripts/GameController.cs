@@ -138,101 +138,103 @@ public class GameController : MonoBehaviour
         // Debug.Log(timeWarning);
 
 
-        if (int.Parse(currentSeconds) == stopStages[stage] && isWarning)
+        if (int.Parse(currentSeconds) == stopStages[0] && isWarning)
         {
             video360.Pause();
-            warningText.text = "Investiga el entorno!";
-            warning.SetActive(true);
-            questionText.text = "Pregunta: " + questions[stage];
-            buttonsText[0].text = "A: " + answerA[stage];
-            buttonsText[1].text = "B: " + answerB[stage];
-            buttonsText[2].text = "C: " + answerC[stage];
-            buttonsText[3].text = "D: " + answerD[stage];
+            // warningText.text = "Investiga el entorno!";
+            // warning.SetActive(true);
+            // questionText.text = "Pregunta: " + questions[stage];
+            // buttonsText[0].text = "A: " + answerA[stage];
+            // buttonsText[1].text = "B: " + answerB[stage];
+            // buttonsText[2].text = "C: " + answerC[stage];
+            // buttonsText[3].text = "D: " + answerD[stage];
+            stages[0].SetActive(true); // eliminar luego
+
 
         }
 
-        if ((MyTime - (stopStages[stage] + offsetTime)) == timeWarning)
-        {
-            warning.SetActive(false);
-            stages[stage].SetActive(true);
-            isWarning = false;
-            timeCounter.text = currentMinutes + " : " + timeWarning.ToString();
+        // if ((MyTime - (stopStages[stage] + offsetTime)) == timeWarning)
+        // {
+        //     warning.SetActive(false);
+        //     stages[stage].SetActive(true);
+        //     isWarning = false;
+        //     timeCounter.text = currentMinutes + " : " + timeWarning.ToString();
 
-        }
+        // }
 
-        if ((MyTime - (stopStages[stage] + offsetTime)) > timeWarning && (MyTime - (stopStages[stage] + timeWarning + offsetTime) < timeQuestion))
-        {
-            Timer.SetActive(true);
-            timeCounter.text = currentMinutes + " : " + (timeQuestion + (stopStages[stage] + timeWarning + offsetTime) - MyTime).ToString("00");
+        // if ((MyTime - (stopStages[stage] + offsetTime)) > timeWarning && (MyTime - (stopStages[stage] + timeWarning + offsetTime) < timeQuestion))
+        // {
+        //     Timer.SetActive(true);
+        //     timeCounter.text = currentMinutes + " : " + (timeQuestion + (stopStages[stage] + timeWarning + offsetTime) - MyTime).ToString("00");
 
-        }
-        else if (((MyTime - (stopStages[stage] + timeWarning + timeQuestion + offsetTime) < timeAnswer)))
-        {
-            timeCounter.text = currentMinutes + " : " + (timeAnswer + (stopStages[stage] + timeWarning + timeQuestion + offsetTime) - MyTime).ToString("00");
+        // }
+        // else if (((MyTime - (stopStages[stage] + timeWarning + timeQuestion + offsetTime) < timeAnswer)))
+        // {
+        //     timeCounter.text = currentMinutes + " : " + (timeAnswer + (stopStages[stage] + timeWarning + timeQuestion + offsetTime) - MyTime).ToString("00");
 
-        }
-
-
-        if (MyTime - (stopStages[stage] + timeWarning + offsetTime) == timeQuestion)
-        {
-            stages[stage].SetActive(false);
-            question.SetActive(true);
-            timeCounter.text = currentMinutes + " : " + timeQuestion.ToString();
-
-        }
-
-        if (((MyTime - (stopStages[stage] + timeWarning + timeQuestion + offsetTime) == timeAnswer) && !wasAnswered) || isAnswered)
-        {
-            question.SetActive(false);
-
-            if (!isAnswered && !wasAnswered)
-            {
-                warningText.text = "La pregunta no ha sido contestada";
-                warning.SetActive(true);
-
-            }
-            else if (isAnswered)
-            {
-                if (questionAnswered == correctAnswers[stage])
-                {
-                    warningText.text = "Respuesta correcta!";
-                    score += 10;
-                    PlayerPrefs.SetInt("score", score);
-                    warning.SetActive(true);
-
-                }
-                else if (questionAnswered != correctAnswers[stage])
-                {
-                    warningText.text = "Respuesta incorrecta!";
-                    score -= score > 0 ? 5 : 0;
-                    PlayerPrefs.SetInt("score", score);
-                    warning.SetActive(true);
-
-                }
+        // }
 
 
-                isAnswered = false;
-                wasAnswered = true;
-                scoreText.text = "Score: " + score.ToString();
-            }
-        }
+        // if (MyTime - (stopStages[stage] + timeWarning + offsetTime) == timeQuestion)
+        // {
+        //     stages[stage].SetActive(false);
+        //     question.SetActive(true);
+        //     timeCounter.text = currentMinutes + " : " + timeQuestion.ToString();
 
-        if (MyTime - (stopStages[stage] + timeWarning + timeQuestion + timeAnswer + offsetTime) == 2)
-        {
-            Timer.SetActive(false);
-            stage++;
-            warning.SetActive(false);
-            wasAnswered = false;
-            isAnswered = false;
-            video360.Play();
-            isWarning = true;
-            offsetTime = MyTime - int.Parse(currentSeconds);
-        }
+        // }
 
-        if (stages.Length == stage)
-        {
-            SceneManager.LoadScene("Puntuacion");
-        }
+        // if (((MyTime - (stopStages[stage] + timeWarning + timeQuestion + offsetTime) == timeAnswer) && !wasAnswered) || isAnswered)
+        // {
+        //     question.SetActive(false);
+
+        //     if (!isAnswered && !wasAnswered)
+        //     {
+        //         warningText.text = "La pregunta no ha sido contestada";
+        //         warning.SetActive(true);
+
+        //     }
+        //     else if (isAnswered)
+        //     {
+        //         if (questionAnswered == correctAnswers[stage])
+        //         {
+        //             warningText.text = "Respuesta correcta!";
+        //             score += 10;
+        //             PlayerPrefs.SetInt("score", score);
+        //             warning.SetActive(true);
+
+        //         }
+        //         else if (questionAnswered != correctAnswers[stage])
+        //         {
+        //             warningText.text = "Respuesta incorrecta!";
+        //             score -= score > 0 ? 5 : 0;
+        //             PlayerPrefs.SetInt("score", score);
+        //             warning.SetActive(true);
+
+        //         }
+
+
+        //         isAnswered = false;
+        //         wasAnswered = true;
+        //         scoreText.text = "Score: " + score.ToString();
+        //     }
+        // }
+
+        // if (MyTime - (stopStages[stage] + timeWarning + timeQuestion + timeAnswer + offsetTime) == 2)
+        // {
+        //     Timer.SetActive(false);
+        //     stage++;
+        //     warning.SetActive(false);
+        //     wasAnswered = false;
+        //     isAnswered = false;
+        //     video360.Play();
+        //     isWarning = true;
+        //     offsetTime = MyTime - int.Parse(currentSeconds);
+        // }
+
+        // if (stages.Length == stage)
+        // {
+        //     SceneManager.LoadScene("Puntuacion");
+        // }
 
         // Debug.Log(score);
 
