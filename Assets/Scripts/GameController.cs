@@ -138,7 +138,7 @@ public class GameController : MonoBehaviour
         // Debug.Log(timeWarning);
 
 
-        if (int.Parse(currentSeconds) == stopStages[0] && isWarning)
+        if (int.Parse(currentSeconds) == stopStages[2] && isWarning)
         {
             video360.Pause();
             // warningText.text = "Investiga el entorno!";
@@ -148,7 +148,7 @@ public class GameController : MonoBehaviour
             // buttonsText[1].text = "B: " + answerB[stage];
             // buttonsText[2].text = "C: " + answerC[stage];
             // buttonsText[3].text = "D: " + answerD[stage];
-            stages[0].SetActive(true); // eliminar luego
+            stages[2].SetActive(true); // eliminar luego
 
 
         }
